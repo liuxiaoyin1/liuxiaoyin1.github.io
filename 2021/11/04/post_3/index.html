@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>le | liu小银的个人博客</title>
+  <title>选择排序(选择法) | liu小银的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一个测试用来debug">
+  <meta name="description" content="前言其实我挺讨厌换角标这个方法的 嘛 不过还是写出来了 请各位多指教了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="le">
-<meta property="og:url" content="http://yoursite.com/2021/11/04/le/index.html">
+<meta property="og:title" content="选择排序(选择法)">
+<meta property="og:url" content="http://yoursite.com/2021/11/04/post_3/index.html">
 <meta property="og:site_name" content="liu小银的个人博客">
-<meta property="og:description" content="这是一个测试用来debug">
+<meta property="og:description" content="前言其实我挺讨厌换角标这个方法的 嘛 不过还是写出来了 请各位多指教了">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-11-04T09:34:12.000Z">
-<meta property="article:modified_time" content="2021-11-04T09:38:00.745Z">
+<meta property="article:published_time" content="2021-11-04T10:38:59.000Z">
+<meta property="article:modified_time" content="2021-11-04T11:48:23.963Z">
 <meta property="article:author" content="liuxiaoyin1">
+<meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="liu小银的个人博客" type="application/atom+xml">
@@ -158,28 +159,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-le" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-post_3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      le
+      选择排序(选择法)
     </h1>
   
 
         
-        <a href="/2021/11/04/le/" class="archive-article-date">
-  	<time datetime="2021-11-04T09:34:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
+        <a href="/2021/11/04/post_3/" class="archive-article-date">
+  	<time datetime="2021-11-04T10:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="这是一个测试"><a href="#这是一个测试" class="headerlink" title="这是一个测试"></a>这是一个测试</h2><p>用来debug</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其实我挺讨厌换角标这个方法的 嘛 不过还是写出来了 请各位多指教了</p>
+<a id="more"></a>
 
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">10</span>],i,k,j,t;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)&#123; <span class="comment">//比较的趟数 是个数字比较9次即可因此条件为i&lt;9</span></span><br><span class="line">        k=i;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;<span class="number">10</span>;j++)&#123; <span class="comment">//从k的下一位角标与k进行比较因此条件为j=i+1 角标最大为9 因此条件为j&lt;10</span></span><br><span class="line">            <span class="keyword">if</span>(a[j]&lt;a[k])   <span class="comment">//若发现比a[k]小的值则交换角标 使得a[k]中存有的值为最小值</span></span><br><span class="line">            k=j;</span><br><span class="line">        &#125;</span><br><span class="line">        t=a[i];     <span class="comment">//将a[k]中的值(即最小值)赋给a[0]</span></span><br><span class="line">        a[i]=a[k];</span><br><span class="line">        a[k]=t;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -187,6 +190,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -237,7 +251,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/11/04/le/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/11/04/post_3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -251,18 +265,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/11/04/post_3/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/11/04/post_1/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          选择排序(选择法)
+          使用穷举法求最大公约数和最小公倍数
         
       </div>
     </a>
   
   
-    <a href="/2021/10/23/po/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">po</div>
+    <a href="/2021/11/04/le/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">le</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -289,7 +303,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#这是一个测试"><span class="toc-number">1.</span> <span class="toc-text">这是一个测试</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
                     </div>
                 </span>
             </div>
